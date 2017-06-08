@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2F5A3145-6D38-42F7-9302-D94C19FCC205}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GameProject.UI</RootNamespace>
-    <AssemblyName>GameProject.UI</AssemblyName>
+    <RootNamespace>Kablamo.UI</RootNamespace>
+    <AssemblyName>Kablamo.UI</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

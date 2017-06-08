@@ -7,8 +7,8 @@
     <ProjectGuid>{13AE7DE4-9C45-47AA-9BF2-38A25FDFFB24}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameProject.BLL</RootNamespace>
-    <AssemblyName>GameProject.BLL</AssemblyName>
+    <RootNamespace>Kablamo.BLL</RootNamespace>
+    <AssemblyName>Kablamo.BLL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
