@@ -83,6 +83,14 @@ namespace Kablamo.BLL
             }
         }
 
+        private bool IsOnBoard(Coordinate coord)
+        {
+            return coord.XCoordinate >= 0
+                && coord.YCoordinate >= 0
+                && coord.XCoordinate <= 9
+                && coord.YCoordinate <= 9;
+        }
+
         private void InitalizeBoard()
         {
             _boardState = new Dictionary<Coordinate, SquareStatus>();
