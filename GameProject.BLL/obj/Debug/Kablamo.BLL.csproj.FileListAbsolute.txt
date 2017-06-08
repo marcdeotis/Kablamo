@@ -1,0 +1,5 @@
+C:\Kablamo\GameProject.BLL\bin\Debug\GameProject.BLL.dll
+C:\Kablamo\GameProject.BLL\bin\Debug\GameProject.BLL.pdb
+C:\Kablamo\GameProject.BLL\obj\Debug\Kablamo.BLL.csprojResolveAssemblyReference.cache
+C:\Kablamo\GameProject.BLL\obj\Debug\GameProject.BLL.dll
+C:\Kablamo\GameProject.BLL\obj\Debug\GameProject.BLL.pdb

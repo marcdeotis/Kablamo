@@ -1,0 +1,8 @@
+C:\Kablamo\GameProject.UI\bin\Debug\GameProject.UI.exe.config
+C:\Kablamo\GameProject.UI\bin\Debug\GameProject.UI.exe
+C:\Kablamo\GameProject.UI\bin\Debug\GameProject.UI.pdb
+C:\Kablamo\GameProject.UI\bin\Debug\GameProject.BLL.dll
+C:\Kablamo\GameProject.UI\bin\Debug\GameProject.BLL.pdb
+C:\Kablamo\GameProject.UI\obj\Debug\Kablamo.UI.csprojResolveAssemblyReference.cache
+C:\Kablamo\GameProject.UI\obj\Debug\GameProject.UI.exe
+C:\Kablamo\GameProject.UI\obj\Debug\GameProject.UI.pdb

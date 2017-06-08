@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameProject.UI", "GameProject.UI\GameProject.UI.csproj", "{2F5A3145-6D38-42F7-9302-D94C19FCC205}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kablamo.UI", "GameProject.UI\Kablamo.UI.csproj", "{2F5A3145-6D38-42F7-9302-D94C19FCC205}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameProject.BLL", "GameProject.BLL\GameProject.BLL.csproj", "{13AE7DE4-9C45-47AA-9BF2-38A25FDFFB24}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kablamo.BLL", "GameProject.BLL\Kablamo.BLL.csproj", "{13AE7DE4-9C45-47AA-9BF2-38A25FDFFB24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
