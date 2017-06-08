@@ -19,45 +19,45 @@ namespace Kablamo.BLL
             new Coordinate(0, -1),
             new Coordinate(1, -1), };
         private List<Coordinate> _moves;
-        private bool _isBlueTurn = false;
+        private bool _isBlueTurn = true;
         public Dictionary<Coordinate, SquareStatus> BoardState { get { return _boardState; } }
-        
+
 
         public Board()
         {
-            InitalizeBoard(); 
+            InitalizeBoard();
         }
 
         public Board MakeMove(Coordinate coord)
         {
-            if(IsOnBoard(coord))
+            if (IsOnBoard(coord))
             {
-
                 _moves = _boardState.Where(x => x.Value == (_isBlueTurn ? SquareStatus.DoubleBlue : SquareStatus.DoubleRed)).Select(y => y.Key).ToList();
                 if (_moves.Any(x => (x.XCoordinate == coord.XCoordinate) && (x.YCoordinate == coord.YCoordinate)))
                 {
                     _boardState[coord] = SquareStatus.Empty;
+                    SinglesToDoubles();
                     ChangeSquares(coord);
                 }
             }
-           
+
             return this;
         }
-
-        //ToDo: Change singles to doubles before for each loop.
+        
         private void ChangeSquares(Coordinate coord)
         {
-            
+            bool changing = true;
             foreach (var coordinate in _vectors)
             {
                 Coordinate temp = new Coordinate(coord.XCoordinate, coord.YCoordinate);
-                do {
+                do
+                {
                     temp += coordinate;
                     if (!IsOnBoard(temp))
                     {
-                        return;
+                        break;
                     }
-                    if(_isBlueTurn)
+                    if (_isBlueTurn)
                     {
                         switch (_boardState[temp].ToString())
                         {
@@ -65,10 +65,19 @@ namespace Kablamo.BLL
                             case "SingleBlue":
                             case "BlueBase":
                             case "DoubleBlue":
+                                changing = false;
+                                break;
+                            case "SingleRed":
+                            case "DoubleRed":
+                                _boardState[temp] = SquareStatus.Empty;
+                                changing = false;
+                                break;
+                            case "RedBase":
+                                //Victory condition
                                 break;
                             default:
+                                _boardState[temp] = SquareStatus.SingleBlue;
                                 break;
-
                         }
                     }
                     else
@@ -79,40 +88,43 @@ namespace Kablamo.BLL
                             case "SingleRed":
                             case "RedBase":
                             case "DoubleRed":
+                                changing = false;
+                                break;
+                            case "SingleBlue":
+                            case "DoubleBlue":
+                                _boardState[temp] = SquareStatus.Empty;
+                                changing = false;
+                                break;
+                            case "BlueBase":
+                                //Victory condition
                                 break;
                             default:
+                                _boardState[temp] = SquareStatus.SingleRed;
                                 break;
-
                         }
                     }
-                    
-                } while (true);
+                } while (changing);
+                changing = true;
             }
+            _isBlueTurn = !_isBlueTurn;
         }
 
-        private void SinglesToDoubles(SquareStatus colorChange)
+        private void SinglesToDoubles()
         {
-            for (int i = 0; i < 10; i++)
+            List<Coordinate> query = _boardState.Where(x => x.Value == (_isBlueTurn ? SquareStatus.SingleBlue : SquareStatus.SingleRed)).Select(y => y.Key).ToList();
+
+            foreach(var coordinate in query)
             {
-                for (int k = 0; k < 10; k++)
+                if(_isBlueTurn)
                 {
-                    switch(_boardState[new Coordinate(i, k)].ToString())
-                    {
-                        case "SingleRed":
-                            if (colorChange != SquareStatus.SingleRed)
-                            {
-                                _boardState[new Coordinate(i, k)] = SquareStatus.DoubleRed;
-                            }
-                            break;
-                        case "SingleBlue":
-                            if (colorChange != SquareStatus.SingleBlue)
-                            {
-                                _boardState[new Coordinate(i, k)] = SquareStatus.DoubleBlue;
-                            }
-                            break;
-                    }
+                    _boardState[coordinate] = SquareStatus.DoubleBlue;
+                }
+                else
+                {
+                    _boardState[coordinate] = SquareStatus.DoubleRed;
                 }
             }
+  
         }
 
         private bool IsOnBoard(Coordinate coord)
@@ -134,26 +146,26 @@ namespace Kablamo.BLL
                 }
             }
 
-             Coordinate blueBase = new Coordinate(0, 0);
-             Coordinate redBase = new Coordinate(9, 9);
-             Coordinate wallUpperRight1 = new Coordinate(0, 8);
-             Coordinate wallUpperRight2 = new Coordinate(0, 9);
-             Coordinate wallUpperRight3 = new Coordinate(1, 8);
-             Coordinate wallUpperRight4 = new Coordinate(1, 9);
-             Coordinate middleWall1 = new Coordinate(4, 4);
-             Coordinate middleWall2 = new Coordinate(4, 5);
-             Coordinate middleWall3 = new Coordinate(5, 4);
-             Coordinate middleWall4 = new Coordinate(5, 5);
-             Coordinate wallLowerLeft1 = new Coordinate(8, 0);
-             Coordinate wallLowerLeft2 = new Coordinate(8, 1);
-             Coordinate wallLowerLeft3 = new Coordinate(9, 0);
-             Coordinate wallLowerLeft4 = new Coordinate(9, 1);
-             Coordinate bluePlayable1 = new Coordinate(0, 1);
-             Coordinate bluePlayable2 = new Coordinate(1, 0);
-             Coordinate redPlayable1 = new Coordinate(9, 8);
-             Coordinate redPlayable2 = new Coordinate(8, 9);
-             Coordinate blueSingle= new Coordinate(1, 1);
-             Coordinate redSingle = new Coordinate(8, 8);
+            Coordinate blueBase = new Coordinate(0, 0);
+            Coordinate redBase = new Coordinate(9, 9);
+            Coordinate wallUpperRight1 = new Coordinate(0, 8);
+            Coordinate wallUpperRight2 = new Coordinate(0, 9);
+            Coordinate wallUpperRight3 = new Coordinate(1, 8);
+            Coordinate wallUpperRight4 = new Coordinate(1, 9);
+            Coordinate middleWall1 = new Coordinate(4, 4);
+            Coordinate middleWall2 = new Coordinate(4, 5);
+            Coordinate middleWall3 = new Coordinate(5, 4);
+            Coordinate middleWall4 = new Coordinate(5, 5);
+            Coordinate wallLowerLeft1 = new Coordinate(8, 0);
+            Coordinate wallLowerLeft2 = new Coordinate(8, 1);
+            Coordinate wallLowerLeft3 = new Coordinate(9, 0);
+            Coordinate wallLowerLeft4 = new Coordinate(9, 1);
+            Coordinate bluePlayable1 = new Coordinate(0, 1);
+            Coordinate bluePlayable2 = new Coordinate(1, 0);
+            Coordinate redPlayable1 = new Coordinate(9, 8);
+            Coordinate redPlayable2 = new Coordinate(8, 9);
+            Coordinate blueSingle = new Coordinate(1, 1);
+            Coordinate redSingle = new Coordinate(8, 8);
 
             //Bases
             _boardState[blueBase] = SquareStatus.BlueBase;
