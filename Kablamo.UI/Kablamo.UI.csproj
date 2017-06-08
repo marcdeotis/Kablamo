@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameProject.BLL\Kablamo.BLL.csproj">
+    <ProjectReference Include="..\Kablamo.BLL\Kablamo.BLL.csproj">
       <Project>{13ae7de4-9c45-47aa-9bf2-38a25fdffb24}</Project>
       <Name>Kablamo.BLL</Name>
     </ProjectReference>
