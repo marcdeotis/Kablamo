@@ -11,6 +11,7 @@ namespace Kablamo.BLL
         public int XCoordinate { get; set; }
         public int YCoordinate { get; set; }
 
+
         public Coordinate(int x, int y)
         {
             XCoordinate = x;
@@ -31,6 +32,14 @@ namespace Kablamo.BLL
         {
             string uniqueHash = this.XCoordinate.ToString() + this.YCoordinate.ToString() + "00";
             return (Convert.ToInt32(uniqueHash));
+        }
+
+        public static Coordinate operator+ (Coordinate a, Coordinate b)
+        {
+            Coordinate toReturn = new Coordinate(a.XCoordinate, a.YCoordinate);
+            toReturn.XCoordinate += b.XCoordinate;
+            toReturn.YCoordinate += b.YCoordinate;
+            return toReturn;
         }
 
         

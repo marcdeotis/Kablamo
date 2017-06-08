@@ -9,8 +9,19 @@ namespace Kablamo.BLL
     public class Board
     {
         private Dictionary<Coordinate, SquareStatus> _boardState;
+        private static List<Coordinate> _vectors = new List<Coordinate>() {
+            new Coordinate(1, 0),
+            new Coordinate(1, 1),
+            new Coordinate(0, 1),
+            new Coordinate(-1, 1),
+            new Coordinate(-1, 0),
+            new Coordinate(-1, -1),
+            new Coordinate(0, -1),
+            new Coordinate(1, -1), };
         private List<Coordinate> _moves;
+        private bool _isBlueTurn = false;
         public Dictionary<Coordinate, SquareStatus> BoardState { get { return _boardState; } }
+        
 
         public Board()
         {
@@ -19,45 +30,66 @@ namespace Kablamo.BLL
 
         public Board MakeMove(Coordinate coord)
         {
-            _moves = _boardState.Where(x => x.Value == SquareStatus.DoubleBlue || x.Value == SquareStatus.DoubleRed).Select(y => y.Key).ToList();
-            if (_moves.Any(x => (x.XCoordinate == coord.XCoordinate) && (x.YCoordinate == coord.YCoordinate)))
+            if(IsOnBoard(coord))
             {
-                SquareStatus temp = _boardState[coord];
-                _boardState[coord] = SquareStatus.Empty;
-                ChangeSquares(coord);
-            }
 
+                _moves = _boardState.Where(x => x.Value == (_isBlueTurn ? SquareStatus.DoubleBlue : SquareStatus.DoubleRed)).Select(y => y.Key).ToList();
+                if (_moves.Any(x => (x.XCoordinate == coord.XCoordinate) && (x.YCoordinate == coord.YCoordinate)))
+                {
+                    _boardState[coord] = SquareStatus.Empty;
+                    ChangeSquares(coord);
+                }
+            }
+           
             return this;
         }
 
+        //ToDo: Change singles to doubles before for each loop.
         private void ChangeSquares(Coordinate coord)
         {
-            bool changing = true;
-            int x = 2;
-            int y = 0;
-            int[,] vector = { { 1, 0 }, { -1, 0 } , { 0, -1 } , { 0, 1 } , { -1, -1 } , { 1, 1 } , { -1, 1 } , { 1, -1 } };
-
-            while (changing)
+            
+            foreach (var coordinate in _vectors)
             {
+                Coordinate temp = new Coordinate(coord.XCoordinate, coord.YCoordinate);
+                do {
+                    temp += coordinate;
+                    if (!IsOnBoard(temp))
+                    {
+                        return;
+                    }
+                    if(_isBlueTurn)
+                    {
+                        switch (_boardState[temp].ToString())
+                        {
+                            case "Wall":
+                            case "SingleBlue":
+                            case "BlueBase":
+                            case "DoubleBlue":
+                                break;
+                            default:
+                                break;
 
-                Coordinate temp = new Coordinate(coord.XCoordinate + vector[x, y], coord.YCoordinate + vector[x, y+1]);
-                
-                switch(_boardState[temp].ToString())
-                {
-                    case "Wall":
-                    case "SingleRed":
-                        changing = false;
-                        break;
-                    default:
-                        _boardState[temp] = SquareStatus.SingleRed;
-                        ChangeSquares(temp);
-                        break;
-                }
-                if(x != 8)
-                { x++; }
-                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (_boardState[temp].ToString())
+                        {
+                            case "Wall":
+                            case "SingleRed":
+                            case "RedBase":
+                            case "DoubleRed":
+                                break;
+                            default:
+                                break;
+
+                        }
+                    }
+                    
+                } while (true);
             }
         }
+
         private void SinglesToDoubles(SquareStatus colorChange)
         {
             for (int i = 0; i < 10; i++)
