@@ -1,5 +1,0 @@
-C:\IndividualWork\jordan-yemma-individual-work\GameProject\GameProject.BLL\bin\Debug\GameProject.BLL.dll
-C:\IndividualWork\jordan-yemma-individual-work\GameProject\GameProject.BLL\bin\Debug\GameProject.BLL.pdb
-C:\IndividualWork\jordan-yemma-individual-work\GameProject\GameProject.BLL\obj\Debug\GameProject.BLL.csprojResolveAssemblyReference.cache
-C:\IndividualWork\jordan-yemma-individual-work\GameProject\GameProject.BLL\obj\Debug\GameProject.BLL.dll
-C:\IndividualWork\jordan-yemma-individual-work\GameProject\GameProject.BLL\obj\Debug\GameProject.BLL.pdb

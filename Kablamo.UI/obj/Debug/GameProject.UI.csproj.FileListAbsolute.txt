@@ -1,8 +1,0 @@
-C:\IndividualWork\jordan-yemma-individual-work\GameProject\GameProject.UI\bin\Debug\GameProject.UI.exe.config
-C:\IndividualWork\jordan-yemma-individual-work\GameProject\GameProject.UI\bin\Debug\GameProject.UI.exe
-C:\IndividualWork\jordan-yemma-individual-work\GameProject\GameProject.UI\bin\Debug\GameProject.UI.pdb
-C:\IndividualWork\jordan-yemma-individual-work\GameProject\GameProject.UI\bin\Debug\GameProject.BLL.dll
-C:\IndividualWork\jordan-yemma-individual-work\GameProject\GameProject.UI\bin\Debug\GameProject.BLL.pdb
-C:\IndividualWork\jordan-yemma-individual-work\GameProject\GameProject.UI\obj\Debug\GameProject.UI.csprojResolveAssemblyReference.cache
-C:\IndividualWork\jordan-yemma-individual-work\GameProject\GameProject.UI\obj\Debug\GameProject.UI.exe
-C:\IndividualWork\jordan-yemma-individual-work\GameProject\GameProject.UI\obj\Debug\GameProject.UI.pdb
