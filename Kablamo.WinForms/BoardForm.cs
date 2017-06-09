@@ -20,39 +20,17 @@ namespace Kablamo.WinForms
             _gameBoard = new Board();
 
             FormatTableLayout();
+
+            RefreshButtons();
         }
 
-        private void FormatTableLayout()
+        private void RefreshButtons()
         {
-            minX = _gameBoard.BoardState.Select(s => s.Key.XCoordinate).Min();
-            maxX = _gameBoard.BoardState.Select(s => s.Key.XCoordinate).Max();
-            minY = _gameBoard.BoardState.Select(s => s.Key.YCoordinate).Min();
-            maxY = _gameBoard.BoardState.Select(s => s.Key.YCoordinate).Max();
-
-            xRowCount = Math.Abs(minX - maxX) + 1;
-            yColCount = Math.Abs(minY - maxY) + 1;
-
-            gameTable.ColumnStyles.Clear();
-            gameTable.RowStyles.Clear();
-
-            gameTable.ColumnCount = yColCount;
-            gameTable.RowCount = xRowCount;
-
-            for(int count = 0; count < yColCount; count++)
-            {
-                gameTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, yColCount / 100f));
-            }
-
-            for (int count = 0; count < xRowCount; count++)
-            {
-                gameTable.RowStyles.Add(new RowStyle(SizeType.Percent, xRowCount / 100f));
-            }
-
-            foreach(var coord in _gameBoard.BoardState)
+            foreach (var button in gameButtons)
             {
                 Color squareColor;
 
-                switch (coord.Value)
+                switch (_gameBoard.BoardState[button.squareCoord])
                 {
                     case SquareStatus.BlueBase:
                         squareColor = Color.Blue;
@@ -83,14 +61,52 @@ namespace Kablamo.WinForms
                         break;
                 }
 
+                button.BackColor = squareColor;
+            }
+        }
+
+        private void FormatTableLayout()
+        {
+            minX = _gameBoard.BoardState.Select(s => s.Key.XCoordinate).Min();
+            maxX = _gameBoard.BoardState.Select(s => s.Key.XCoordinate).Max();
+            minY = _gameBoard.BoardState.Select(s => s.Key.YCoordinate).Min();
+            maxY = _gameBoard.BoardState.Select(s => s.Key.YCoordinate).Max();
+
+            xRowCount = Math.Abs(minX - maxX) + 1;
+            yColCount = Math.Abs(minY - maxY) + 1;
+
+            gameTable.ColumnStyles.Clear();
+            gameTable.RowStyles.Clear();
+
+            gameTable.ColumnCount = yColCount;
+            gameTable.RowCount = xRowCount;
+
+            for(int count = 0; count < yColCount; count++)
+            {
+                gameTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, yColCount / 100f));
+            }
+
+            for (int count = 0; count < xRowCount; count++)
+            {
+                gameTable.RowStyles.Add(new RowStyle(SizeType.Percent, xRowCount / 100f));
+            }
+
+            gameButtons = new List<GameButton>();
+
+            foreach (var coord in _gameBoard.BoardState)
+            {
+                singleButton = new GameButton()
+                {
+                    Dock = DockStyle.Fill,
+                    Margin = new Padding(0),
+                    FlatStyle = FlatStyle.Flat,
+                    squareCoord = coord.Key
+                };
+
+                gameButtons.Add(singleButton);
+
                 gameTable.Controls.Add(
-                    new Button()
-                    {
-                        BackColor = squareColor,
-                        Dock = DockStyle.Fill,
-                        Margin = new Padding(0),
-                        FlatStyle = FlatStyle.Flat
-                    },
+                    singleButton,
                     coord.Key.YCoordinate,
                     coord.Key.XCoordinate);
             }
@@ -108,5 +124,7 @@ namespace Kablamo.WinForms
         int maxY;
         int xRowCount;
         int yColCount;
+        List<GameButton> gameButtons;
+        GameButton singleButton;
     }
 }
