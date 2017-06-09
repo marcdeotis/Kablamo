@@ -21,7 +21,7 @@ namespace Kablamo.BLL
         private List<Coordinate> _moves;
         private bool _isBlueTurn = true;
         public Dictionary<Coordinate, SquareStatus> BoardState { get { return _boardState; } }
-
+        //todo: win condition bools?
 
         public Board()
         {
