@@ -103,6 +103,8 @@ namespace Kablamo.WinForms
                     squareCoord = coord.Key
                 };
 
+                singleButton.Click += new System.EventHandler(this.MakeMove_Click);
+
                 gameButtons.Add(singleButton);
 
                 gameTable.Controls.Add(
@@ -110,11 +112,6 @@ namespace Kablamo.WinForms
                     coord.Key.YCoordinate,
                     coord.Key.XCoordinate);
             }
-
-
-
-
-
         }
 
         Board _gameBoard;
@@ -126,5 +123,14 @@ namespace Kablamo.WinForms
         int yColCount;
         List<GameButton> gameButtons;
         GameButton singleButton;
+        
+        private void MakeMove_Click(object sender, EventArgs e)
+        {
+            singleButton = (GameButton)sender;
+
+            _gameBoard.MakeMove(singleButton.squareCoord);
+
+            RefreshButtons();
+        }
     }
 }

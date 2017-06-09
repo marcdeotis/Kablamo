@@ -38,7 +38,7 @@
             this.gameTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.gameTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.gameTable.Location = new System.Drawing.Point(50, 50);
-            this.gameTable.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.gameTable.Margin = new System.Windows.Forms.Padding(0);
             this.gameTable.Name = "gameTable";
             this.gameTable.RowCount = 2;
             this.gameTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49F));
