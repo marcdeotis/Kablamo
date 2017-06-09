@@ -131,6 +131,8 @@ namespace Kablamo.WinForms
             _gameBoard.MakeMove(singleButton.squareCoord);
 
             RefreshButtons();
+
+            //check for win
         }
     }
 }

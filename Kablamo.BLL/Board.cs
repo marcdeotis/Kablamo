@@ -30,6 +30,7 @@ namespace Kablamo.BLL
 
         public Board MakeMove(Coordinate coord)
         {
+            //todo: check for win state don't continue
             if (IsOnBoard(coord))
             {
                 _moves = _boardState.Where(x => x.Value == (_isBlueTurn ? SquareStatus.DoubleBlue : SquareStatus.DoubleRed)).Select(y => y.Key).ToList();
@@ -73,7 +74,7 @@ namespace Kablamo.BLL
                                 changing = false;
                                 break;
                             case "RedBase":
-                                //Victory condition
+                                //todo: RedBase Victory condition
                                 break;
                             default:
                                 _boardState[temp] = SquareStatus.SingleBlue;
@@ -96,7 +97,7 @@ namespace Kablamo.BLL
                                 changing = false;
                                 break;
                             case "BlueBase":
-                                //Victory condition
+                                //todo: RedBase Victory condition
                                 break;
                             default:
                                 _boardState[temp] = SquareStatus.SingleRed;
