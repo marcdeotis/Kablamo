@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kablamo.BLL", "Kablamo.BLL\Kablamo.BLL.csproj", "{13AE7DE4-9C45-47AA-9BF2-38A25FDFFB24}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kablamo.UI", "Kablamo.UI\Kablamo.UI.csproj", "{2F5A3145-6D38-42F7-9302-D94C19FCC205}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kablamo.WinForms", "Kablamo.WinForms\Kablamo.WinForms.csproj", "{C34EB5D5-0ACB-4C75-9FAF-3300B4D6E09D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2F5A3145-6D38-42F7-9302-D94C19FCC205}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F5A3145-6D38-42F7-9302-D94C19FCC205}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F5A3145-6D38-42F7-9302-D94C19FCC205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C34EB5D5-0ACB-4C75-9FAF-3300B4D6E09D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C34EB5D5-0ACB-4C75-9FAF-3300B4D6E09D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C34EB5D5-0ACB-4C75-9FAF-3300B4D6E09D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C34EB5D5-0ACB-4C75-9FAF-3300B4D6E09D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
