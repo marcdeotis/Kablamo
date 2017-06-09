@@ -84,10 +84,13 @@ namespace Kablamo.WinForms
                 }
 
                 gameTable.Controls.Add(
-                    new Panel()
-                    { BackColor = squareColor,
+                    new Button()
+                    {
+                        BackColor = squareColor,
                         Dock = DockStyle.Fill,
-                        Margin = new Padding(0) },
+                        Margin = new Padding(0),
+                        FlatStyle = FlatStyle.Flat
+                    },
                     coord.Key.YCoordinate,
                     coord.Key.XCoordinate);
             }
